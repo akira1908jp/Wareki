@@ -15,6 +15,8 @@ class Wareki {
 
     public const GENGOU_HEISEI = "平成";
 
+    public const GENGOU_REIWA = "令和";
+
     private const MEIJI_DATE = "1868-01-25";
 
     private const TAISYOU_DATE = "1912-07-30";
@@ -23,12 +25,17 @@ class Wareki {
 
     private const HEISEI_DATE = "1989-01-08";
 
+    private const REIWA_DATE = "2019-05-01";
+
     /**
      * @DateTime
      */
     public function convertWareki($date) {
 
-        if ($date >= new DateTime(self::HEISEI_DATE)) {
+        if ($date >= new DateTime(self::REIWA_DATE)) {
+            $gengo = self::GENGOU_REIWA;
+            $wayear = $date->format('Y') - 2018;
+        } elseif ($date >= new DateTime(self::HEISEI_DATE)) {
             $gengo = self::GENGOU_HEISEI;
             $wayear = $date->format('Y') - 1988;
         } elseif ($date >= new DateTime(self::SYOUWA_DATE)) {

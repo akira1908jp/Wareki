@@ -10,6 +10,17 @@ use PHPUnit\Framework\TestCase;
 class WarekiTest extends TestCase {
 
     /**
+     * test 令和
+     */
+    public function testReiwa() {
+        $warekiDate = new Wareki\Wareki();
+        $HeiseiDate = $warekiDate->convertWareki(new DateTime("2019-05-01"));
+        $this->assertEquals($HeiseiDate, "令和元年05月01日");
+        $HeiseiDate = $warekiDate->convertWareki(new DateTime("2020-01-01"));
+        $this->assertEquals($HeiseiDate, "令和02年01月01日");
+    }
+
+    /**
      * test 平成
      */
     public function testHeisei() {
